@@ -17,17 +17,17 @@ LiquidCrystal lcd(RS, EN, D4, D5, D6, D7);
 long initialTime;
 
 void setup()
-{  
+{
   Serial.begin(9600);
 
-  dht.begin(); // Iniciando o sensor
+  dht.begin();      // Iniciando o sensor
   lcd.begin(16, 2); // Iniciando o LCD
 
-  lcd.clear(); // Limpando o LCD
+  lcd.clear();         // Limpando o LCD
   lcd.setCursor(0, 0); // Setando o cursor
-  lcd.print("Teste"); // Teste de imagem
+  lcd.print("Teste");  // Teste de imagem
 
-  initialTime = millis(); // Tomando a referência de inicialização  
+  initialTime = millis(); // Tomando a referência de inicialização
 }
 
 void loop()
@@ -43,8 +43,20 @@ void loop()
     }
     else
     {
+      // Saidas no cabo
       Serial.println("Leitura do sensor:");
       Serial.println(outInfo(humidity, temperature, initialTime));
+
+      // Saidas no LCD
+      lcd.setCursor(0, 0); // Setando o cursor na linha 0 (primeira)
+      lcd.print("Humidade: ");
+      lcd.print((int) humidity);
+      lcd.print(" %");
+
+      lcd.setCursor(0, 1); // Setando o cursor na linha 0 (primeira)
+      lcd.print("Temp: ");
+      lcd.print(temperature);
+      lcd.print(" C");
     }
   }
 }
