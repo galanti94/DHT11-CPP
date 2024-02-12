@@ -37,8 +37,8 @@ void loop()
 
   if ((millis() - initialTime) % 2000 == 0)
   {
-    if (isnan(humidity) || isnan(temperature)) // Verifica se o leitor leu algo
-    {
+    if (isnan(humidity) || isnan(temperature))
+    { // Verifica se o leitor leu algo
       Serial.println("Erro na leitura!");
     }
     else
@@ -50,7 +50,7 @@ void loop()
       // Saidas no LCD
       lcd.setCursor(0, 0); // Setando o cursor na linha 0 (primeira)
       lcd.print("Humidade: ");
-      lcd.print((int) humidity);
+      lcd.print((int)humidity);
       lcd.print(" %");
 
       lcd.setCursor(0, 1); // Setando o cursor na linha 0 (primeira)
